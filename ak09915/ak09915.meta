@@ -13,27 +13,33 @@
     "columns": [
       {
         "llabel": "xRaw",
-        "dtype": "int"
+        "dtype": "int",
+        "color": "fuchsia"
       },
       {
         "llabel": "yRaw",
-        "dtype": "int"
+        "dtype": "int",
+        "color": "darkorchid"
       },
       {
         "llabel": "zRaw",
-        "dtype": "int"
+        "dtype": "int",
+        "color": "rebeccapurple"
       },
       {
         "llabel": "xScaled",
-        "dtype": "float"
+        "dtype": "float",
+        "color": "mediumblue"
       },
       {
         "llabel": "yScaled",
-        "dtype": "float"
+        "dtype": "float",
+        "color": "royalblue"
       },
       {
         "llabel": "zScaled",
-        "dtype": "float"
+        "dtype": "float",
+        "color": "slategrey"
       }
     ]
   }
