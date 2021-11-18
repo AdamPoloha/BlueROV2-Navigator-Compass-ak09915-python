@@ -9,14 +9,6 @@ def generate_figures(log):
     footer = 'ak09915 test report'
 
     f, spec = log.figure(height_ratios=[1, 1], suptitle='ak09915 data', footer=footer)
-
-    plt.subplot(spec[0,0])
-    # todo check if log.error exists, plot empty table or ok
-    try:
-        log.error.head(10).ttable(rl=True)
-    except:
-        pass
-
     plt.subplot(spec[0,:])
     mag.stats().ttable(rl=True)
 
