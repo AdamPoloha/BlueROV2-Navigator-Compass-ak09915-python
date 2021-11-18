@@ -6,11 +6,12 @@ def main():
 
     device = "ak09915"
     parser = LLogWriter.create_default_parser(__file__, device)
+    parser.add_argument("--bus", type=int, default=1, help="i2c bus")
     args = parser.parse_args()
 
 
     with LLogWriter(args.meta, args.output, console=args.console) as log:
-        ak = AK09915()
+        ak = AK09915(args.bus)
 
         def data_getter():
             data = ak.measure()
