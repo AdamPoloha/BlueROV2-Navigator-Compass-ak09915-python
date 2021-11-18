@@ -17,12 +17,17 @@ def generate_figures(log):
     except:
         pass
 
-    plt.subplot(spec[0,1])
+    plt.subplot(spec[0,:])
     mag.stats().ttable(rl=True)
 
     plt.subplot(spec[1,:])
     mag.pplot(title='ak09915 data')
 
+    if getattr(log, 'error', False) is not False:
+        f, spec = log.figure(height_ratios=[1], suptitle='ak09915 errors', footer=footer)
+
+        plt.subplot(spec[0,:])
+        log.error.head(20).ttable(rl=True)
 
 def main():
     from llog import LLogReader
