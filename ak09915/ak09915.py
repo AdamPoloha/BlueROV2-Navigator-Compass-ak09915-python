@@ -75,3 +75,6 @@ class AK09915:
 
     def write(self, register_address, data):
         self._bus.write_i2c_block_data(_address, register_address, data)
+
+    def close(self):
+        self._bus.close()
