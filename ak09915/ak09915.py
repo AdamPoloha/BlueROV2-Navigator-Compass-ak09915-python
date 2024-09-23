@@ -23,9 +23,21 @@ MIN_DELAY_MEASURE = 0.0085
 
 class CompassData:
     def __init__(self, rawdata):
-        self.x_raw = int.from_bytes(rawdata[0:2], 'little', signed=True)
-        self.y_raw = int.from_bytes(rawdata[2:4], 'little', signed=True)
-        self.z_raw = int.from_bytes(rawdata[4:6], 'little', signed=True)
+        hx = rawdata[1]
+        if hx > 127:
+            hx = hx - 256
+        self.x_raw = (hx * 256) + rawdata[0]
+        hy = rawdata[3]
+        if hy > 127:
+            hy = hy - 256
+        self.y_raw = (hy * 256) + rawdata[2]
+        hz = rawdata[5]
+        if hz > 127:
+            hz = hz - 256
+        self.z_raw = (hz * 256) + rawdata[4]
+        #self.x_raw = int.from_bytes(rawdata[0:2], 'little', signed=True)
+        #self.y_raw = int.from_bytes(rawdata[2:4], 'little', signed=True)
+        #self.z_raw = int.from_bytes(rawdata[4:6], 'little', signed=True)
 
         # field strength in Gauss
         self.x = self.x_raw*0.0015
